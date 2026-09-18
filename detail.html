@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>항성여행사 | 대만 예스진지 버스투어 상세페이지</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0b2c5e; --navy-2:#123a78; --red:#e23b3b; --red-dark:#c22e2e;
+    --ink:#222831; --gray:#6b7280; --line:#e6e8ec; --bg:#f5f6f8;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Noto Sans KR',sans-serif;color:var(--ink);background:#fff;line-height:1.7;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px;}
+  h2{font-size:22px;font-weight:900;margin:0 0 6px;}
+  h3{font-size:17px;font-weight:700;margin:0 0 8px;}
+  p{margin:0;color:#3a3f47;font-size:15px;}
+
+  /* photo placeholder */
+  .ph{
+    background:repeating-linear-gradient(135deg,#eef0f3,#eef0f3 10px,#e6e8ec 10px,#e6e8ec 20px);
+    border:1px dashed #c7ccd3;border-radius:10px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    color:#9aa0a8;font-size:13px;gap:8px;
+  }
+  .ph svg{width:28px;height:28px;opacity:0.6;}
+  .ph-hero{height:360px;}
+  .ph-card{height:200px;}
+  .ph-wide{height:280px;}
+  .ph-thumb{height:90px;}
+
+  header.top{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:20;}
+  .top-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:860px;margin:0 auto;}
+  .brand{font-weight:900;color:var(--navy);}
+  .top .btn{background:var(--red);color:#fff;padding:9px 18px;border-radius:6px;font-weight:700;font-size:14px;}
+
+  .summary{padding:24px 0 6px;}
+  .badges{display:flex;gap:8px;margin-bottom:10px;}
+  .badge{font-size:12px;font-weight:700;padding:4px 10px;border-radius:4px;}
+  .badge-red{background:#fdecec;color:var(--red-dark);}
+  .badge-navy{background:#eaf0fa;color:var(--navy);}
+  .summary h1{font-size:24px;margin:0 0 8px;}
+  .summary .rating{color:var(--gray);font-size:14px;margin-bottom:4px;}
+  .rating .stars{color:#ffb400;font-weight:700;}
+  .price-line{font-size:15px;color:var(--gray);margin-top:10px;}
+  .price-line b{font-size:24px;color:var(--ink);margin-left:8px;}
+  .price-line .pct{color:var(--red);font-weight:900;margin-right:4px;}
+
+  section{padding:44px 0;border-top:1px solid var(--line);}
+  .kicker{color:var(--red);font-weight:700;font-size:13px;margin-bottom:8px;display:block;}
+
+  /* recommend */
+  .rec-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px;}
+  .rec-item{display:flex;gap:10px;font-size:14.5px;background:var(--bg);border-radius:8px;padding:14px 16px;}
+  .rec-item::before{content:"✓";color:var(--red);font-weight:900;}
+
+  /* highlights */
+  .hl-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:20px;}
+  .hl-card h3{margin-top:12px;font-size:15.5px;}
+  .hl-card p{font-size:13.5px;color:var(--gray);margin-top:4px;}
+
+  /* course detail, alternating */
+  .course-item{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;margin-top:36px;}
+  .course-item:first-of-type{margin-top:20px;}
+  .course-item.rev .ph{order:2;}
+  .course-item.rev .course-text{order:1;}
+  .course-num{color:var(--red);font-weight:900;font-size:13px;margin-bottom:8px;display:block;}
+  .course-text h3{font-size:19px;margin-bottom:10px;}
+
+  /* itinerary table */
+  .itin-table{width:100%;border-collapse:collapse;margin-top:18px;font-size:14.5px;}
+  .itin-table td{padding:12px 10px;border-bottom:1px solid var(--line);}
+  .itin-table td:first-child{color:var(--red);font-weight:700;width:80px;}
+
+  /* include/exclude */
+  .inc-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:20px;}
+  .inc-box{background:var(--bg);border-radius:10px;padding:20px;}
+  .inc-box h3{margin-bottom:12px;}
+  .inc-box ul{margin:0;padding-left:18px;font-size:14px;color:#3a3f47;display:grid;gap:8px;}
+
+  /* steps */
+  .step-row{display:flex;gap:0;margin-top:20px;flex-wrap:wrap;}
+  .step{flex:1;min-width:140px;text-align:center;padding:0 8px;position:relative;}
+  .step-num{width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;margin:0 auto 10px;}
+  .step p{font-size:13.5px;}
+  .step-title{font-weight:700;font-size:14.5px;margin-bottom:4px;}
+
+  /* notice */
+  .notice-list{margin:16px 0 0;padding-left:18px;font-size:14px;color:#3a3f47;display:grid;gap:10px;}
+
+  /* reviews */
+  .review-card{border:1px solid var(--line);border-radius:10px;padding:20px;margin-top:14px;display:flex;gap:16px;}
+  .review-thumb{width:64px;flex:none;}
+  .review-stars{color:#ffb400;font-size:13px;margin-bottom:6px;}
+  .review-text{font-size:14px;color:#3a3f47;margin-bottom:8px;}
+  .review-name{font-size:12.5px;color:var(--gray);}
+
+  /* faq */
+  details{border-bottom:1px solid var(--line);padding:16px 0;}
+  summary{font-weight:700;font-size:15px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;}
+  summary::-webkit-details-marker{display:none;}
+  summary::after{content:"+";font-size:20px;color:var(--gray);}
+  details[open] summary::after{content:"–";}
+  details p{margin-top:10px;font-size:14px;color:#3a3f47;}
+
+  /* refund table */
+  .refund-table{width:100%;border-collapse:collapse;margin-top:16px;font-size:14px;}
+  .refund-table th,.refund-table td{border:1px solid var(--line);padding:10px 12px;text-align:left;}
+  .refund-table th{background:var(--bg);font-weight:700;}
+
+  .cta-band{background:var(--navy);color:#fff;text-align:center;padding:48px 24px;}
+  .cta-band h2{color:#fff;font-size:20px;margin-bottom:14px;}
+  .cta-band p{color:#c7d5ec;margin-bottom:20px;font-size:14px;}
+  .cta-band a.btn{display:inline-block;background:var(--red);color:#fff;padding:14px 28px;border-radius:8px;font-weight:700;}
+
+  footer{background:#181c22;color:#9aa0a8;padding:36px 24px;font-size:12.5px;text-align:center;line-height:1.9;}
+
+  @media (max-width:700px){
+    .rec-grid,.hl-grid,.inc-grid{grid-template-columns:1fr;}
+    .course-item, .course-item.rev{grid-template-columns:1fr;}
+    .course-item.rev .ph, .course-item.rev .course-text{order:initial;}
+    .step-row{flex-direction:column;gap:20px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <a href="index.html" class="brand">항성여행사</a>
+    <div style="display:flex;align-items:center;gap:16px;">
+      <a href="tour.html" style="font-size:14px;color:var(--gray);font-weight:500;">← 상품 목록으로</a>
+      <a href="#" class="btn">예약 상담하기</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="summary">
+    <div class="badges">
+      <span class="badge badge-red">독점할인</span>
+      <span class="badge badge-navy">100% 출발확정</span>
+    </div>
+    <h1>대만 예스진지 버스투어 (예류·스펀·진과스·지우펀 야경)</h1>
+    <div class="rating"><span class="stars">★★★★★</span> 4.9 · 후기 128건 (예시)</div>
+    <div class="price-line"><span class="pct">45%</span>21,000원 → <b>9,900원</b></div>
+  </div>
+
+  <div class="ph ph-hero" style="margin-top:20px;">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg>
+    대표 이미지 자리 (실제 투어 사진 권장, 1200×800)
+  </div>
+
+  <section>
+    <span class="kicker">WHO IS THIS FOR</span>
+    <h2>이런 분들께 추천드려요</h2>
+    <div class="rec-grid">
+      <div class="rec-item">대만이 처음이라 근교 명소를 효율적으로 둘러보고 싶은 분</div>
+      <div class="rec-item">운전이나 대중교통 환승 없이 편하게 이동하고 싶은 분</div>
+      <div class="rec-item">지우펀 야경까지 하루 코스로 소화하고 싶은 분</div>
+      <div class="rec-item">한국어로 설명 들으며 사진 명소를 챙기고 싶은 분</div>
+    </div>
+  </section>
+
+  <section>
+    <span class="kicker">HIGHLIGHT</span>
+    <h2>한눈에 보는 코스 하이라이트</h2>
+    <div class="hl-grid">
+      <div class="hl-card">
+        <div class="ph ph-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg>사진 자리</div>
+        <h3>예류지질공원</h3>
+        <p>여왕머리바위 등 기암괴석이 유명한 해안 지질공원</p>
+      </div>
+      <div class="hl-card">
+        <div class="ph ph-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg>사진 자리</div>
+        <h3>스펀 · 천등날리기</h3>
+        <p>철길 마을에서 소원을 적은 천등을 직접 날려보는 체험</p>
+      </div>
+      <div class="hl-card">
+        <div class="ph ph-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg>사진 자리</div>
+        <h3>스펀폭포</h3>
+        <p>대만 북부에서 규모가 큰 편에 속하는 폭포</p>
+      </div>
+      <div class="hl-card">
+        <div class="ph ph-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg>사진 자리</div>
+        <h3>지우펀 야경</h3>
+        <p>홍등이 켜지는 저녁 시간대, 좁은 골목의 야경 명소</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="kicker">COURSE</span>
+    <h2>상세 코스 소개</h2>
+
+    <div class="course-item">
+      <div class="ph ph-wide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg>사진 자리</div>
+      <div class="course-text">
+        <span class="course-num">STOP 1</span>
+        <h3>예류지질공원</h3>
+        <p>오랜 시간 파도와 바람에 깎여 만들어진 독특한 기암괴석 지대입니다. 대표적인 여왕머리바위를 비롯해 다양한 형태의 바위를 가까이서 볼 수 있어, 도착 직후부터 사진 찍을 곳이 많은 코스입니다.</p>
+      </div>
+    </div>
+
+    <div class="course-item rev">
+      <div class="ph ph-wide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg>사진 자리</div>
+      <div class="course-text">
+        <span class="course-num">STOP 2</span>
+        <h3>스펀 · 천등날리기</h3>
+        <p>기찻길 옆으로 이어진 마을에서 소원을 적은 천등을 직접 하늘로 띄워보는 체험을 합니다. 기차가 지나가는 시간에는 철길 위에서 사진을 찍는 사람들로 붐비는, 대만 근교 투어의 대표 포토스팟입니다.</p>
+      </div>
+    </div>
+
+    <div class="course-item">
+      <div class="ph ph-wide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg>사진 자리</div>
+      <div class="course-text">
+        <span class="course-num">STOP 3</span>
+        <h3>스펀폭포</h3>
+        <p>스펀 마을에서 도보로 이동 가능한 거리에 있는 폭포로, 대만 북부 지역에서는 규모가 큰 편에 속합니다. 폭포 주변 산책로를 따라 걸으며 시원한 물줄기를 가까이서 감상할 수 있습니다.</p>
+      </div>
+    </div>
+
+    <div class="course-item rev">
+      <div class="ph ph-wide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg>사진 자리</div>
+      <div class="course-text">
+        <span class="course-num">STOP 4</span>
+        <h3>진과스</h3>
+        <p>과거 금광 채굴로 번성했던 산골 마을로, 지금은 그 시절 흔적을 그대로 간직한 관광지로 남아있습니다. 골목을 천천히 걸으며 옛 대만의 정취를 느껴볼 수 있는 코스입니다.</p>
+      </div>
+    </div>
+
+    <div class="course-item">
+      <div class="ph ph-wide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg>사진 자리</div>
+      <div class="course-text">
+        <span class="course-num">STOP 5</span>
+        <h3>지우펀 야경</h3>
+        <p>해질 무렵 하나둘 홍등이 켜지기 시작하면 좁은 골목이 특유의 분위기로 물듭니다. 계단식 골목과 찻집, 야시장 먹거리까지 함께 즐길 수 있는, 이 투어의 하이라이트 코스입니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="kicker">SCHEDULE</span>
+    <h2>상세 일정표</h2>
+    <table class="itin-table">
+      <tr><td>09:50</td><td>시먼역 집합</td></tr>
+      <tr><td>10:40</td><td>예류지질공원 도착 · 자유관람</td></tr>
+      <tr><td>13:00</td><td>스펀 도착 · 천등날리기 체험, 자유식</td></tr>
+      <tr><td>14:30</td><td>스펀폭포 이동 · 산책</td></tr>
+      <tr><td>16:00</td><td>진과스 이동 · 자유관람</td></tr>
+      <tr><td>18:00</td><td>지우펀 도착 · 야경 및 자유시간</td></tr>
+      <tr><td>21:00</td><td>시먼역 하차 · 일정 종료</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <span class="kicker">DETAILS</span>
+    <h2>포함 / 불포함 사항</h2>
+    <div class="inc-grid">
+      <div class="inc-box">
+        <h3>포함사항</h3>
+        <ul>
+          <li>왕복 전용 버스</li>
+          <li>한국어 가능 가이드 동행</li>
+          <li>여행자보험</li>
+        </ul>
+      </div>
+      <div class="inc-box">
+        <h3>불포함사항</h3>
+        <ul>
+          <li>개인 식비</li>
+          <li>스펀 천등 체험비 (현장 결제)</li>
+          <li>개인 기념품 및 쇼핑 비용</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="kicker">HOW TO BOOK</span>
+    <h2>이용 방법</h2>
+    <div class="step-row">
+      <div class="step"><div class="step-num">1</div><div class="step-title">예약 신청</div><p>카카오톡 채널로 날짜·인원 상담</p></div>
+      <div class="step"><div class="step-num">2</div><div class="step-title">결제 안내</div><p>계좌이체 또는 카드결제 진행</p></div>
+      <div class="step"><div class="step-num">3</div><div class="step-title">일정 확정 안내</div><p>출발 전날 집합 시간·장소 문자 안내</p></div>
+      <div class="step"><div class="step-num">4</div><div class="step-title">투어 진행</div><p>가이드와 함께 코스 진행</p></div>
+      <div class="step"><div class="step-num">5</div><div class="step-title">후기 작성</div><p>다녀오신 후 후기 남기면 다음 예약 할인</p></div>
+    </div>
+  </section>
+
+  <section>
+    <span class="kicker">NOTICE</span>
+    <h2>이용 시 유의사항</h2>
+    <ul class="notice-list">
+      <li>우천 시에도 코스는 정상 진행되며, 천재지변 등 불가항력 사유로만 일정이 변경될 수 있습니다.</li>
+      <li>교통 상황에 따라 각 코스 도착 시간이 다소 변동될 수 있습니다.</li>
+      <li>천등 체험, 개인 간식 등은 현장에서 개별 결제해야 합니다.</li>
+      <li>차량 좌석은 예약 순서에 따라 배정되며, 좌석 지정은 어렵습니다.</li>
+    </ul>
+  </section>
+
+  <section id="reviews">
+    <span class="kicker">REVIEWS</span>
+    <h2>이용후기 (예시)</h2>
+
+    <div class="review-card">
+      <div class="ph ph-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:18px;height:18px;"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg></div>
+      <div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">가이드님 설명이 자세해서 대만이 처음인데도 편하게 다녀왔습니다. 지우펀 야경 코스가 특히 좋았어요.</div>
+        <div class="review-name">고객 A · 2025.08</div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="ph ph-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:18px;height:18px;"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg></div>
+      <div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">코스가 알차게 짜여 있어서 하루 만에 근교 명소를 다 둘러봤어요. 이동 시간도 생각보다 짧았습니다.</div>
+        <div class="review-name">고객 B · 2025.08</div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="ph ph-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:18px;height:18px;"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg></div>
+      <div>
+        <div class="review-stars">★★★★☆</div>
+        <div class="review-text">버스가 쾌적하고 시간도 잘 지켜졌습니다. 사진 찍을 시간도 충분히 줘서 만족스러웠어요.</div>
+        <div class="review-name">고객 C · 2025.07</div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:#9aa0a8;margin-top:14px;text-align:right;">* 위 후기는 레이아웃 예시용 샘플입니다.</p>
+  </section>
+
+  <section>
+    <span class="kicker">FAQ</span>
+    <h2>자주 묻는 질문</h2>
+
+    <details open>
+      <summary>미성년자만 예약할 수 있나요?</summary>
+      <p>만 14세 미만은 보호자 동반이 필요합니다. 단독 참여를 원하실 경우 사전에 상담을 통해 확인해 주세요.</p>
+    </details>
+    <details>
+      <summary>우천 시에도 진행되나요?</summary>
+      <p>네, 우천 시에도 코스는 정상 진행됩니다. 우산이나 우비를 준비해 주시기를 권장드립니다.</p>
+    </details>
+    <details>
+      <summary>중간에 개별적으로 하차할 수 있나요?</summary>
+      <p>단체로 이동하는 투어 특성상 개별 하차는 어렵습니다. 자유일정이 필요하신 경우 다른 상품을 문의해 주세요.</p>
+    </details>
+    <details>
+      <summary>짐을 맡길 수 있나요?</summary>
+      <p>차량 내 소지 가능한 수준의 짐만 허용되며, 큰 캐리어는 반입이 제한될 수 있습니다.</p>
+    </details>
+  </section>
+
+  <section>
+    <span class="kicker">REFUND POLICY</span>
+    <h2>취소 · 환불 규정</h2>
+    <table class="refund-table">
+      <tr><th>취소 시점</th><th>환불 비율</th></tr>
+      <tr><td>출발 3일 전까지</td><td>100% 환불</td></tr>
+      <tr><td>출발 1~2일 전</td><td>90% 환불</td></tr>
+      <tr><td>출발 당일 · 노쇼</td><td>환불 불가</td></tr>
+    </table>
+    <p style="margin-top:12px;font-size:12.5px;color:#9aa0a8;">* 위 기준은 예시이며, 실제 계약 시 여행사 표준약관 기준으로 게재해 주세요.</p>
+  </section>
+
+</div>
+
+<section class="cta-band">
+  <h2>예약 문의 및 실시간 잔여석 확인</h2>
+  <p>카카오톡 채널 상담으로 빠르게 도와드립니다</p>
+  <a href="#" class="btn">카카오톡 상담하기</a>
+</section>
+
+<footer>
+  상호: 항성여행사(예시) · 대표: 홍길동(예시) · 사업자등록번호: 000-00-00000(예시)<br>
+  통신판매업신고: 제0000-서울강남-00000호(예시) · 주소: 서울특별시 강남구 (예시)<br>
+  <span style="color:#6b7078;">본 페이지는 레이아웃 초안이며, 실제 사업자 정보와 사진·후기 콘텐츠로 교체 후 사용해 주세요.</span>
+</footer>
+
+</body>
+</html>
